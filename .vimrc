@@ -12,18 +12,33 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'burke/matcher'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'ervandew/supertab'
+Plugin 'rking/ag.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-airline'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" change where swp and backup files are stored
+set undodir=~/.vim/.undo/
+set backupdir=~/.vim/backup/
+set directory=~/.vim/.swp/
 
 set term=screen-256color
 
 colorscheme beekai
 
+" remove whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
 set number " set line number
 syntax enable " enable syntax processing
-set tabstop=4 	" number of visual spaces per tab
-set softtabstop=4 " number of spaces in tab when editing
+set tabstop=8 	" number of visual spaces per tab
+set softtabstop=8  " number of spaces in tab when editing
+set smarttab smartindent expandtab
+set shiftwidth=2 	" ident to corresepond to a single tab
 set cursorline	" highlight current line
 set wildmenu	" visual autocomplete for command menu
 set showmatch	" highlight matching parentheses
@@ -44,7 +59,7 @@ map <leader>s :source ~/.vimrc<CR>
 set hidden
 set history=100
 
-autocmd BufWritePre * :%s/\s\+$//e	" remove whitespaces on save
+" function to remove highlighted white space and save
 
 " switch to previously viewed file
 nnoremap <leader><leader> :e#<CR>
@@ -91,9 +106,36 @@ end
 " bind K to search for the word under the cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" change netrw configuration
+" map cmd-p to ctr-p fuzzy search
+nnoremap <D-p> <C-p>
+
+"  change netrw configuration
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
+
+" map the escape key to various key combinations
+inoremap jj <Esc>
+inoremap jk <Esc>
+
+" control screen split and navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+" add some support for tab completion
+set wildmode=longest,list,full
+set wildmenu
+
+" change clipboard config in visual mode
+vnoremap <cr> "+y<cr>
+vnoremap <BS> "+p<cr>
+
+" set bar at a textwidth of 100 chars
+set colorcolumn=101
 
