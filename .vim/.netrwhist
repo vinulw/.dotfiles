@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/vinulw'
-let g:netrw_dirhist_2='/home/vinulw/Desktop'
-let g:netrw_dirhist_3='/home/vinulw'
-let g:netrw_dirhist_4='/home'
-let g:netrw_dirhist_5='/'
-let g:netrw_dirhist_6='/home'
-let g:netrw_dirhist_7='/home/vinulw'
-let g:netrw_dirhist_8='/home/vinulw/Documents/machinelearningudacity/naive_bayes/accuracy'
+let g:netrw_dirhist_cnt =0

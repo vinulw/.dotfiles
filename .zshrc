@@ -2,13 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/vinulw/.oh-my-zsh
+  export ZSH=/Users/vinulwimalaweera/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
-eval `dircolors ~/.dir_colors/dircolors`
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -19,9 +18,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for sessions
 
-export EDITOR='vim'
+export EDITOR="/usr/local/bin/vim"
 
-export VISUAL=/usr/bin/vim
+export VISUAL="/usr/local/bin/vim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
