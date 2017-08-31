@@ -17,6 +17,9 @@ Plugin 'ervandew/supertab'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'w0rp/ale'
+Plugin 'python-mode/python-mode'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -138,4 +141,10 @@ vnoremap <BS> "+p<cr>
 
 " set bar at a textwidth of 100 chars
 set colorcolumn=101
+
+" allow vim access to the system clipboard
+set clipboard=unnamed
+
+" python stuff
+let python_highlight_all = 1
 
