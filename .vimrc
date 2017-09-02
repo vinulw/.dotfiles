@@ -34,10 +34,8 @@ set directory=~/.vim/.swp/
 
 set term=screen-256color
 
-" change color-scheme based on time of day
-if !exists('g:colors_name')
-   execute 'colorscheme ' . (strftime('%H') < 17 ? 'github' : 'turtles')
-endif
+" set colorscheme
+colorscheme turtles
 
 " set powerline colorscheme
 let g:airline_theme='distinguished'
