@@ -9,17 +9,20 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'burke/matcher'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'ervandew/supertab'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'AlessandroYorba/Despacio'       "Color scheme
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
 Plugin 'python-mode/python-mode'
+Plugin 'beigebrucewayne/Turtles'
+Plugin 'albertorestifo/github.vim'      " Light color scheme
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,7 +34,14 @@ set directory=~/.vim/.swp/
 
 set term=screen-256color
 
-colorscheme beekai
+" change color-scheme based on time of day
+if !exists('g:colors_name')
+   execute 'colorscheme ' . (strftime('%H') < 17 ? 'github' : 'turtles')
+endif
+
+" set powerline colorscheme
+let g:airline_theme='distinguished'
+let g:airline_powerline_fonts = 1
 
 " remove whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
