@@ -12,3 +12,6 @@
   st = status
 
   ap = add --patch
+  ulc = reset --soft HEAD~1
+
+  la = "!git config -l | grep alias | cut -c 7-"
