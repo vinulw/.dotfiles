@@ -23,6 +23,9 @@ Plugin 'python-mode/python-mode'
 Plugin 'beigebrucewayne/Turtles'
 Plugin 'albertorestifo/github.vim'      " Light color scheme
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'othree/html5.vim'
+Plugin 'alvan/vim-closetag'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
