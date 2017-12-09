@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'burke/matcher'
-Plugin 'vim-ruby/vim-ruby'
+" Plugin 'vim-ruby/vim-ruby'
 Plugin 'ervandew/supertab'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -26,6 +26,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'othree/html5.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
+Plugin 'vim-latex/vim-latex'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -78,9 +79,15 @@ set history=100
 " switch to previously viewed file
 nnoremap <leader><leader> :e#<CR>
 
+" set grep to always generate file name for laTeX
+set grepprg=grep\ -nH\ $*
+
+" change default filetype to tex instead of plaintex
+let g:tex_flavour='latex'
+
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor\ -nH\ $*
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -123,6 +130,10 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " map cmd-p to ctr-p fuzzy search
 nnoremap <D-p> <C-p>
 
+" navigate using visual lines
+nnoremap j gj
+nnoremap k gk
+
 "  change netrw configuration
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -138,6 +149,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" key map to add clipboard copy and paste
+:inoremap <C-v> <ESC>"+pa
+:vnoremap <C-c> "+y
+:vnoremap <C-d> "+d
 
 set splitbelow
 set splitright
