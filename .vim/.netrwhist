@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/vinulw/Documents/funk_website/fonts'
 let g:netrw_dirhist_2='/home/vinulw/Documents/funk_website/images'
 let g:netrw_dirhist_3='/home/vinulw/Documents/funk_website/images/crew2014'
+let g:netrw_dirhist_4='/home/vinulw'
+let g:netrw_dirhist_5='/home/vinulw/.tmux'
+let g:netrw_dirhist_6='/home/vinulw/.dotfiles'
+let g:netrw_dirhist_7='/home/vinulw'
