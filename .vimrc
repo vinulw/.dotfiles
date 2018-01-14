@@ -27,6 +27,7 @@ Plugin 'othree/html5.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-latex/vim-latex'
+Plugin 'terryma/vim-multiple-cursors'   " Multiple cursos support
 
 call vundle#end()            " required
 filetype plugin indent on    " required
