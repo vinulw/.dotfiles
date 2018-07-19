@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/vinulw/.dotfiles/zsh-custom/themes'
-let g:netrw_dirhist_2='/home/vinulw/Documents/Physicists_Digital_Photography'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/vw16/Documents/Materials_Project_Test'
+let g:netrw_dirhist_2='/home/vw16/Documents/Materials_Project_Test/NTEDatabase'
+let g:netrw_dirhist_3='/home/vw16/Documents/Materials_Project_Test'
+let g:netrw_dirhist_4='/home/vw16/Documents/Materials_Project_Test/NTEDatabase'
+let g:netrw_dirhist_5='/workspace/vw16/Materials_Project_Test'

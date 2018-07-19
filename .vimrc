@@ -20,14 +20,15 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
 Plugin 'python-mode/python-mode'
-Plugin 'beigebrucewayne/Turtles'
-Plugin 'albertorestifo/github.vim'      " Light color scheme
+" Plugin 'beigebrucewayne/Turtles'
+" Plugin 'albertorestifo/github.vim'      " Light color scheme
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'othree/html5.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-latex/vim-latex'
 Plugin 'terryma/vim-multiple-cursors'   " Multiple cursos support
+Plugin 'nightsense/stellarized'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -40,7 +41,8 @@ set directory=~/.vim/.swp/
 set term=screen-256color
 
 " set colorscheme
-colorscheme turtles
+colorscheme stellarized
+set background=light
 
 " set powerline colorscheme
 let g:airline_theme='distinguished'
@@ -174,5 +176,8 @@ set colorcolumn=101
 set clipboard=unnamed
 
 " python stuff
-let python_highlight_all = 1
-
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_warnings = 0
+let g:pymode_lint_cwindow = 0
+let g:pymode_folding = 0
