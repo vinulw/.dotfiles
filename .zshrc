@@ -40,6 +40,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Export path to custom bash scripts
 
 export PATH=$PATH:~/.bin
+export PATH=~/anaconda3/bin/:$PATH
 
 # alias the different python environments
 alias pyenv2='source ~/py2_kernel/bin/activate'

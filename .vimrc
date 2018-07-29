@@ -28,6 +28,8 @@ Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-latex/vim-latex'
 Plugin 'terryma/vim-multiple-cursors'   " Multiple cursos support
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -134,6 +136,9 @@ nnoremap <D-p> <C-p>
 " navigate using visual lines
 nnoremap j gj
 nnoremap k gk
+
+" make sure typescript syntax highlighting works
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 "  change netrw configuration
 let g:netrw_liststyle = 3
