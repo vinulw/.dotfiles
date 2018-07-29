@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/vinulw/Documents/funk_website/angular5'
 let g:netrw_dirhist_2='/home/vinulw/Documents/funk_website/angular5/src'
 let g:netrw_dirhist_3='/home/vinulw/Documents/funk_website/angular5'
 let g:netrw_dirhist_4='/home/vinulw/Documents/funk_website/angular5/src/app/app-routing'
 let g:netrw_dirhist_5='/home/vinulw/Documents/Materials_Project_Test'
 let g:netrw_dirhist_6='/home/vinulw/Documents/Materials_Project_Test/NTEDatabase'
+let g:netrw_dirhist_7='/home/vinulw/.dotfiles/.vim/bundle/ale'
+let g:netrw_dirhist_8='/home/vinulw/.dotfiles/.vim/bundle'
