@@ -1,38 +1,45 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Don't try to be vi compatible
+set nocompatible
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'burke/matcher'
-" Plugin 'vim-ruby/vim-ruby'
-Plugin 'ervandew/supertab'
-Plugin 'rking/ag.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'AlessandroYorba/Despacio'       "Color scheme
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'w0rp/ale'
-Plugin 'python-mode/python-mode'
-" Plugin 'beigebrucewayne/Turtles'
-" Plugin 'albertorestifo/github.vim'      " Light color scheme
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'othree/html5.vim'
-Plugin 'alvan/vim-closetag'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vim-latex/vim-latex'
-Plugin 'terryma/vim-multiple-cursors'   " Multiple cursos support
-Plugin 'leafgarland/typescript-vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'nightsense/stellarized'
+Plugin 'lervag/vimtex'
+Plugin 'python-mode/python-mode'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'mg979/vim-visual-multi'
+Plugin 'craigemery/vim-autotag'
+Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'preservim/nerdtree'
+Plugin 'morhetz/gruvbox' " colourscheme
+Plugin 'christoomey/vim-tmux-navigator'
 
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 filetype plugin indent on    " required
 
 " change where swp and backup files are stored
@@ -40,28 +47,56 @@ set undodir=~/.vim/.undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/.swp/
 
-set term=screen-256color
+" Security
+set modelines=0
 
-" set colorscheme
-colorscheme stellarized
-set background=light
+" Show line numbers
+set number
 
-" set powerline colorscheme
-let g:airline_theme='distinguished'
-let g:airline_powerline_fonts = 1
+" Ultisnips configuration
+" Trigger configuration. You need to change this to something else than <tab>
+" if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger ="<c-h>"
+let g:UltiSnipsJumpForwardTrigger ="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger ="<c-z>"
 
-" remove whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
-set number " set line number
-syntax enable " enable syntax processing
-set tabstop=8 	" number of visual spaces per tab
-set softtabstop=8  " number of spaces in tab when editing
-set smarttab smartindent expandtab
-set shiftwidth=2 	" ident to corresepond to a single tab
-set cursorline	" highlight current line
-set wildmenu	" visual autocomplete for command menu
-set showmatch	" highlight matching parentheses
+" Remap the leader to comma
+let mapleader=","
+let maplocalleader='\\'
+
+" Enable syntax processing
+syntax enable
+
+" Show file stats
+set ruler
+
+" Turn of the annoying bells
+set belloff=all
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=8 " number of visual spaces per tab
+set shiftwidth=4 " number of spaces in tab when editing
+set softtabstop=4
+set expandtab
+set noshiftround
+set wildmenu " visual autocomplete for command menu
+set showmatch " highlight matching parenthesis
+
+" Move up or down the editor lines
+nnoremap j gj
+nnoremap k gk
+
+" Show the status line
+set laststatus=2
 
 " Search related stuff
 set incsearch	" search as characters are enteres
@@ -76,71 +111,29 @@ filetype on		"let vim detect the filetype
 " reload vimrc config
 map <leader>s :source ~/.vimrc<CR>
 
+" remove whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" Search related stuff
+set incsearch	" search as characters are enteres
+
+" Search related stuff
+set hlsearch	" highlight search matches
+
+" turn off search highlight after enter
+nnoremap <leader><space> :nohlsearch<CR>
+
+set ignorecase " ignore case when searching
+set smartcase " include case if a case in search is upper
+
 set hidden
 set history=100
-
-" function to remove highlighted white space and save
 
 " switch to previously viewed file
 nnoremap <leader><leader> :e#<CR>
 
-" set grep to always generate file name for laTeX
-set grepprg=grep\ -nH\ $*
-
 " change default filetype to tex instead of plaintex
-let g:tex_flavour='latex'
-
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ -nH\ $*
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-" integrate silver searcher with matcher for better search results
-if executable('matcher')
-    let g:ctrlp_match_func = { 'match': 'GoodMatch' }
-
-    function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
-
-      " Create a cache file if not yet exists
-      let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
-      if !( filereadable(cachefile) && a:items == readfile(cachefile) )
-        call writefile(a:items, cachefile)
-      endif
-      if !filereadable(cachefile)
-        return []
-      endif
-
-      " a:mmode is currently ignored. In the future, we should probably do
-      " something about that. the matcher behaves like "full-line".
-      let cmd = 'matcher --limit '.a:limit.' --manifest '.cachefile.' '
-      if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
-        let cmd = cmd.'--no-dotfiles '
-      endif
-      let cmd = cmd.a:str
-
-      return split(system(cmd), "\n")
-
-    endfunction
-end
-
-" bind K to search for the word under the cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" map cmd-p to ctr-p fuzzy search
-nnoremap <D-p> <C-p>
-
-" navigate using visual lines
-nnoremap j gj
-nnoremap k gk
-
-" make sure typescript syntax highlighting works
-autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+let g:tex_flavor='latex'
 
 "  change netrw configuration
 let g:netrw_liststyle = 3
@@ -174,11 +167,24 @@ set wildmenu
 vnoremap <cr> "+y<cr>
 vnoremap <BS> "+p<cr>
 
-" set bar at a textwidth of 100 chars
-set colorcolumn=101
-
 " allow vim access to the system clipboard
 set clipboard=unnamed
+
+if (has("termguicolors"))
+  set termguicolors
+  "" This is only necessary if you use "set termguicolors".
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endi
+
+
+" Color scheme (terminal)
+set background=light
+colorscheme gruvbox
+
+" set powerline colorscheme
+let g:airline_theme='distinguished'
+let g:airline_powerline_fonts = 1
 
 " python stuff
 let g:pymode_syntax = 1
@@ -186,3 +192,23 @@ let g:pymode_syntax_all = 1
 let g:pymode_warnings = 0
 let g:pymode_lint_cwindow = 0
 let g:pymode_folding = 0
+
+" Turn on spellcheck for latex and markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_gb
+autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_gb
+
+" Add tags file
+set tags=./tags,tags;$HOME
+
+" vim-markdown config
+autocmd FileType markdown normal zR
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+
+" Markdownn previewer config
+let g:mkdp_markdown_css = '/home/vinulw/global_css/github-markdown-css/github-markdown.css'
+let g:mkdp_refresh_slow = 1
+
+" Make the working directory the same as the current file
+set autochdir

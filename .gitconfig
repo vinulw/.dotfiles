@@ -1,19 +1,19 @@
 [user]
-	name = VinDel77
-	email = vinul25@live.co.uk
+	name = Vinul Wimalaweera
+	email = 16556525+vinulw@users.noreply.github.com
 
 [alias]
+    a = add
+    co = checkout
+    ci = commit
+    st = status
+    b = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    p = push
+    ap = add --patch
 
-  a = add
-  b = branch
-  c = commit
-  co = checkout
-  p = push
-  st = status
+    lgp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
-  ap = add --patch
-  ulc = reset --soft HEAD~1
-
-  lgp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
-  la = "!git config -l | grep alias | cut -c 7-"
+    la = "!git config -l | grep alias | cut -c 7-"
