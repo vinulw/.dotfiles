@@ -23,7 +23,7 @@ local options = {
   updatetime = 300,                        -- faster completion (4000ms default)
   expandtab = true,                        -- convert tabs to spaces
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
-  tabstop = 2,                             -- insert 2 spaces for a tab
+  tabstop = 4,                             -- insert 2 spaces for a tab
   number = true,                           -- set numbered lines
   relativenumber = false,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
@@ -37,11 +37,11 @@ local options = {
 -- TODO
 -- - Add tmp directory for swaps
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
-})
-vim.cmd [[set formatoptions+=r1n]] -- format option now `tcqrn1`
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--   pattern = { "*" },
+--   command = [[%s/\s\+$//e]],
+-- })
+-- vim.cmd [[set formatoptions+=r1n]] -- format option now `tcqrn1`
 
 for k, v in pairs(options) do
     vim.opt[k] = v

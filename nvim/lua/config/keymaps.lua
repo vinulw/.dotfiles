@@ -6,9 +6,8 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
--- keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = "\\"
 
 -- Modes
 --   normal_mode = "n",
@@ -24,17 +23,6 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
--- Telescope
-keymap("n", "<leader>fp", ":lua require 'telescope.builtin'.planets{}<CR>", opts)
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-
--- Open explorer quickly
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
-keymap("i", "<leader>t", "<C-c>:NvimTreeToggle<CR>", opts)
 
 -- Search
 keymap("n", "<leader><space>", ":nohlsearch<cr>", opts)
