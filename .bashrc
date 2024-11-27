@@ -19,6 +19,10 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Search history with up arrow
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -105,9 +109,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Allow autojump to work correctly
-. /usr/share/autojump/autojump.sh
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,26 +120,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$PATH:$HOME/.emacs.d/bin:$HOME/.local/bin
-export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
-export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$INFOPATH
-export PATH="$PATH:/home/vinulw/julia-1.5.3/bin"
+# handle viewing csv 
+function pretty_csv {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
 
-# Add paths for scripts
-export PATH="$PATH:~/scripts"
+# Add PATH variables 
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:$HOME/scripts"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/vinulw/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/vinulw/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/vinulw/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/vinulw/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Enable starship prompt
+eval "$(starship init bash)"
