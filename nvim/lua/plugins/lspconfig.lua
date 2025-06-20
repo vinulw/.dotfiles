@@ -6,7 +6,6 @@ return {
     },
     config = function()
       local nvim_lsp = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
 
       local protocol = require("vim.lsp.protocol")
       local capabilities = protocol.make_client_capabilities()
@@ -30,12 +29,41 @@ return {
 
         map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
         map("n", "gr", vim.lsp.buf.references, opts "Show references")
+        map("n", "<leader>lr", vim.lsp.buf.rename, opts "Rename")
       end     --})
+
+
+      -- setup lsps
 
       nvim_lsp.pyright.setup {
         on_attach = on_attach,
         capabilities = capabilities,
         filetypes = {"python"}
+      }
+
+      nvim_lsp.harper_ls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = {"markdown", "python", "gitcommit"}
+      }
+
+      nvim_lsp.ltex.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = {"plaintex", "tex"},
+        settings = {
+              ltex = {
+                  language = "en-GB",
+              },
+          }
+      }
+
+      --Enable (broadcasting) snippet capability for completion
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      require'lspconfig'.jsonls.setup {
+        capabilities = capabilities,
       }
   end,
 }

@@ -45,6 +45,10 @@ keymap("n", "<leader>bn", ":bnext<CR>", opts)
 keymap("n", "<leader>bp", ":bprevious<CR>", opts)
 keymap("n", "<leader>bd", ":b#|bd#<CR>", opts)
 
+-- Quickfix
+keymap("n", "<leader>cn", ":cnext<CR>", opts)
+keymap("n", "<leader>cp", ":cprev<CR>", opts)
+
 -- Insert --
 -- Press jj fast to enter
 keymap("i", "jj", "<ESC>", opts)

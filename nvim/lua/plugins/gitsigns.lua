@@ -1,4 +1,12 @@
 return {
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      local keymap = vim.keymap.set
+      keymap.set("n", "<leader>gd", ":Gitvdiffsplit", {desc="Git diff split" })
+    end,
+  },
+  {
     "lewis6991/gitsigns.nvim",
     config = function()
         local gitsigns = require("gitsigns")
@@ -12,7 +20,7 @@ return {
                 untracked = { text = "┆" },
             },
             signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-            numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+            numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
             linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
             word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
             watch_gitdir = {
@@ -41,5 +49,14 @@ return {
                 col = 1,
             },
         })
+        local keymap = vim.keymap
+        keymap.set("n", "<leader>gi", ":Gitsigns preview_hunk_inline<CR>", {desc="Git preview inline"})
+        keymap.set("n", "<leader>gn", ":Gitsigns next_hunk<CR>", {desc="Git next hunk"})
+        keymap.set("n", "<leader>gp", ":Gitsigns prev_hunk<CR>", {desc="Git previous hunk"})
+        keymap.set("n", "<leader>gB", ":Gitsigns blame<CR>", {desc="Git blame"})
+        keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", {desc="Git blame line"})
+        keymap.set("n", "<leader>gq", ":Gitsigns setqlist<CR>", {desc="Git quickfix"})
+        keymap.set("n", "<leader>gd", ":Gitsigns diffthis<CR>", {desc="Git diff"})
     end,
+  }
 }
